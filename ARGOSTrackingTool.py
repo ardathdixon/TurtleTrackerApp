@@ -31,13 +31,15 @@ for lineString in line_list:
 
     # Split the string into a list of data items
     lineData = lineString.split()
-    # Only keep LC 3, 2, 1
-    if lineData[4] != "3" and lineData[4] != "2" and lineData[4] != "1": continue
-
+   
     # Extract items in list into variables
     record_id = lineData[0]
     obs_date = lineData[2]
     obs_lc = lineData[4]
+    
+    # Only keep LC 3, 2, 1
+    if obs_lc not in ("3","2","1"): continue
+
     obs_lat = lineData[6]
     obs_lon = lineData[7]
     
@@ -46,4 +48,4 @@ for lineString in line_list:
 
     # Assign values to dictionaries
     date_dict[record_id] = obs_date
-    coord_dict[record_id] = (obs_lat,obs_lon )
+    coord_dict[record_id] = (obs_lat,obs_lon)
